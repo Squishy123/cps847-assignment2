@@ -16,8 +16,6 @@ deploy:
   app: cps-847-a2
   env: Cps847a2-env
   bucket_name: elasticbeanstalk-us-east-2-711445640774
-  on:
-    repo: Squishy123/cps847-assignment2
   skip_cleanup: 'true'
 after_success:
 - codecov
