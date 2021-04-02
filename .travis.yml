@@ -1,34 +1,23 @@
-# Disable sudo to speed up the build
 sudo: false
-
-# Set the build language to Python
 language: python
-
-# Set the python version to 2.7
 python: 2.7
-
-# Install the codecov pip dependency
 install:
-  - pip install codecov
-
-# Run the unit test
+- pip install codecov
 script:
-  - coverage run tests.py
-
+- coverage run tests.py
 services:
-  - docker
-
+- docker
 deploy:
   provider: elasticbeanstalk
-  access_key_id:
-    secure: "Encrypted <access-key-id>=[access_key_id]"
+  access_key_id: AKIA2LJLW6ZDFE5DBAH7
   secret_access_key:
-    secure: "Encypted <secret-access-key>=[secret_access_key]"
-  region: "[region]"
-  app: "example-app-name"
-  env: "example-app-environment"
-  bucket_name: "[bucket_name]"
-
-# Push the results back to codecov
+    secure: N2LubvUu6HlHoq8d51wk+8DkQi8g2Y268DIR9w+MogUZjOh4gYrUy/8LiMSML4qSIjmgIXavghv0QaqT6qoqhiKwNeD2YQx6BhHIhXvJXjaBoKFhxmIsM455Bu6x/Kx22Ge1XTCzVZlKtcAIlCCONkn+8YYwtFudAWMn6e56UIDQEng61/ivwehhpOT/CiZjoxy12MA8AfTJ5o1HNMPPNkL0IS9iVHnParCm6qcjTUJ2hYnhXDdIuAXaU0Wv0bXf1Y3ALLR6Rxka1elyYqt0LcmWMfl2Z2ZQHlGNEEFODLpSufEYmRhL1lM6zCk28OR9QWKhn9Z6yt6TfGrGm//AxH/HYTw4hxBdW94pu1mSoqWiMsyN9N9H+VWCN/qlwgpN1dwKa3N2jeqMnLofbd+h5pgsl4czAZd0gqk8OeEqs0TMIA+TkB6h7FeVAvSviHnhM3j0KXAA4uThSpcMDIXQFqk/OpNMMCulV8B5dqd5G2eTlzFEkpdBeK5rfK60ENSNCulMb8lgmLoTYVGz9nDeANIENiHpl3qj7rPowCC6LzTj0s6Lo5yUC8mEjUDR/0lAHcHghOuLJEJ3jSsAkHRzwI5Bpi/TY5nDhMLXdvotbm/yJKLPOW8Ech2S9Kx6m4qqi87/scrWGd3ZHc+DaF7bW/wuyNX2RSZFak9VpPxNbtw=
+  region: us-east-2
+  app: cps-847-a2
+  env: Cps847a2-env
+  bucket_name: elasticbeanstalk-us-east-2-711445640774
+  on:
+    repo: Squishy123/cps847-assignment2
+  skip_cleanup: 'true'
 after_success:
-  - codecov
+- codecov
